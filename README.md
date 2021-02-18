@@ -41,5 +41,5 @@ In this project, We built a private Eventbrite which allows users to create even
 
 ## License
 
-[MIT]licensed software.
+[MIT] licensed software.
 
