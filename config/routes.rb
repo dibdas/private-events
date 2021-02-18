@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  resources :users, only: %i[new create show]
-  resources :sessions, only: %i[new create destroy]
+  resources :events
+  devise_for :users
+  
+  root to: "events#index"
 
-  resources :events, only: %i[index new create show] do
-    resources :event_attendances, only: %i[create]
-  end
-
-  resources :event_attendances, only: %i[destroy]
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

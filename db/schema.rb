@@ -10,34 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_140250) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "event_attendances", force: :cascade do |t|
-    t.integer "attendee_id", null: false
-    t.integer "attended_event_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["attendee_id", "attended_event_id"], name: "index_event_attendances_on_attendee_id_and_attended_event_id"
-  end
+ActiveRecord::Schema.define(version: 2021_02_18_125557) do
 
   create_table "events", force: :cascade do |t|
-    t.datetime "event_date", null: false
-    t.string "name", default: "", null: false
-    t.integer "creator_id", null: false
-    t.text "description"
+    t.string "title"
+    t.string "location"
+    t.string "description"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_date", "creator_id"], name: "index_events_on_event_date_and_creator_id"
+    t.integer "creator_id"
   end
 
+
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "username"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_users_on_name"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
