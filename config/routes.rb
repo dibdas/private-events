@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :events
-  devise_for :users
+  resources :events__skip_collision_checks
+  resources :users
+  
   
   root to: "events#index"
 

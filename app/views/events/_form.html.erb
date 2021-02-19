@@ -11,28 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-  
-<%= current_user.inspect%>
   <div class="actions">
-    <%= form.submit class: "btn btn-secondary"%>
+    <%= form.submit %>
   </div>
 <% end %>
