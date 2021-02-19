@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class="container">
+
+  <div class="row">
+    <h2 class="col"> Upcoming Events</h2>
+  </div>
+  <div class="row">
+    <% @upcoming_events.each do |event| %>
+      <%= render 'events/event', event: event %>
+    <% end %>
+  </div>
+</div>
+
+<!--
 <h1>Users</h1>
 
 <table>
@@ -27,3 +41,4 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+-->

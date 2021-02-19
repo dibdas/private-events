@@ -30,8 +30,9 @@
     <%= form.label :date %>
     <%= form.datetime_select :date %>
   </div>
-
+  
+<%= current_user.inspect%>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary"%>
   </div>
 <% end %>
