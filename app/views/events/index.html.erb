@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
 <table>
   <thead>
     <tr>
@@ -10,15 +8,22 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h1>Users</h1>
+<% if user_signed_in? %>
+  <%= current_user.username%>
+  <% else %>
+  Your not logged in
+<% end %>
 
 <br>
 
