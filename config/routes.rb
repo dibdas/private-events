@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :events
-  resources :events__skip_collision_checks
-  resources :users
+  root 'static_pages#home'
+  resources :users, only: %i[new create show]
+  resources :sessions, only: %i[new create destroy]
 
-  root to: 'events#index'
-  post '/users' => 'users#create'
+  resources :events, only: %i[index new create show] do
+    resources :event_attendances, only: %i[create]
+  end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :event_attendances, only: %i[destroy]
 end

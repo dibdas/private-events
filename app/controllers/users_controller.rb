@@ -1,38 +1,32 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
- 
-  def index
-    @users = User.all
+  before_action :authenticate_user, only: %i[show]
+
+  def new
+    @user = User.new
+
+    render layout: 'slate'
   end
-
-  def show; end
-
 
   def create
-    @user = User.newy(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to users_path
-      else
-        flash[:registered_errors] = user.errors.full_messages
+    @user = User.new(user_params)
+
+    if @user.save
+      sign_in(@user)
+      redirect_to root_path, success: 'Successfully created your account'
+    else
+      render :new
     end
   end
 
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  def show
+    @users_event = current_user.events
+    @upcoming_events = current_user.upcoming_events
+    @previous_events = current_user.previous_events
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:name)
   end
 end
