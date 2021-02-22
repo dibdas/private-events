@@ -1,30 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-
+ 
   def index
     @users = User.all
   end
 
   def show; end
 
-  def new
-    if session[:current_user_id]
-      flash[:notice] = 'You are already logged in.'
-      return redirect_to users_path
-    end
-    @user = User.new
-  end
 
   def create
-    @user = User.find_or_create_by(user_params)
-
-    respond_to do |format|
+    @user = User.newy(user_params)
       if @user.save
-        session[:current_user_id] = @user.id
-
-        format.html { redirect_to users_path, notice: 'You are logged in successfully.' }
-        format.json { render :show, status: :created, location: @user }
-      end
+        session[:user_id] = @user.id
+        redirect_to users_path
+      else
+        flash[:registered_errors] = user.errors.full_messages
     end
   end
 
