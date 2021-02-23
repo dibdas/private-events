@@ -1,0 +1,13 @@
+<main class="d-flex flex-justify-center py-7">
+  <div>
+    <div>
+      <h2><%= @event.name %></h2>
+      <p>Created by <%= @event.creator_name %> on <%= @event.event_date %></p>
+      <%= render "event_actionable" %>
+    </div>
+    <div class="mt-4" id="attendee-list">
+      <h4>Attendees</h4>
+      <%= show_events(@event) %>
+    </div>
+  </div>
+</main>
