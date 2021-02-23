@@ -7,13 +7,7 @@
     </div>
     <div class="mt-4" id="attendee-list">
       <h4>Attendees</h4>
-      <% if @event.attendees.size.positive? %>
-        <% @event.attendees.each do |attendee| %>
-          <p><%= attendee.name %></p>
-        <% end %>
-      <% else %>
-        <p>Currently no one is attending this event</p>
-      <% end %>
+      <%= show_events(@event) %>
     </div>
   </div>
 </main>
