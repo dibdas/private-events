@@ -1,4 +1,3 @@
-mockup.png
 
 # Private Events
 
