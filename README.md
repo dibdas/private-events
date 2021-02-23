@@ -15,7 +15,7 @@ In this project, We built a private Eventbrite which allows users to create even
 - `cd` into the directory
 - Run `bundle install`
 - Run `rails webpacker:install` to install Webpacker if you don't have it installed
-- Run `rails db:create db:migrate` (optional)
+- Run `rails db:create db:migrate`
 - Run `rails s`
 - Go to `localhost:3000`
 
